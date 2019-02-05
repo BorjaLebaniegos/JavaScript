@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Batalla de Rol</title>
+</head>
+<body>
+
+<button id="mago">Ataca Mago</button>
+<button id="trol">Ataca Troll</button>
+<button id="duende">Ataca Duende</button>
+<button id="topo">Ataca Topo</button>
+<div id="msg"></div>
+<div id="msg2"></div>
+<div id="msg3"></div>
+<div id="msg4"></div>
+
+<script>
+class Personaje {
+    constructor(nombre, fuerza, vida, fortaleza, debilidad) {
+        this.nombre=nombre;
+        this.fuerza=fuerza;
+        this.vida=vida;
+        this.fortaleza=fortaleza;
+        this.debilidad=debilidad;
+    } 
+
+
+get Nick(){
+    return "nombre: " +  this.nombre;
+}
+
+set ataque(value){
+    console.log(typeof value);
+    if (typeof value == "number") {
+        this.fuerza = value;
+    }
+}
+} 
+
+var MAGO1= new Personaje("Mago", 120, 50,"volar","electricidad");
+
+console.log(MAGO1.nombre);
+class PersonajeMagico extends Personaje{
+    constructor(nombre, fuerza, vida, fortaleza, debilidad, poderEspecial, aliado, enemigo, experiencia, nivel) {
+        super (nombre, fuerza, vida, fortaleza, debilidad);
+        this.poderEspecial=poderEspecial;
+        this.aliado=aliado;
+        this.enemigo=enemigo;
+        this.experiencia=experiencia;
+        this.nivel=nivel;
+    }
+
+    lanzarHechizo(){
+        console.log("KAMELAMEHHAHAHAHAHAHHAHAHA")
+        return "KAMELAMEHHAHAHAHAHAHHAHAHA";
+    }
+    Cubrise(){
+        console.log("Cúbrete")
+    }
+    morir(){
+        console.log("Muero")
+    }
+} 
+
+
+class Trolls extends Personaje{
+    constructor(nombre, fuerza, vida, fortaleza, debilidad, poderEspecial, aliado, enemigo, experiencia, nivel) {
+        super (nombre, fuerza, vida, fortaleza, debilidad);
+        this.poderEspecial=poderEspecial;
+        this.aliado=aliado;
+        this.enemigo=enemigo;
+        this.experiencia=experiencia;
+        this.nivel=nivel;
+    }
+
+    Garrotazo(){
+        console.log("Muere Mago")
+    }
+    Asustar(){
+        console.log("Muere del Susto")
+    } 
+    morir(){
+        console.log("¡Te Arrenpentiras!")
+        return "¡Te Arrenpentiras!";
+    } 
+} 
+
+
+class duende extends Personaje{
+    constructor(nombre, fuerza, vida, fortaleza, debilidad, poderEspecial, aliado, enemigo, experiencia, nivel) {
+        super (nombre, fuerza, vida, fortaleza, debilidad);
+        this.poderEspecial=poderEspecial;
+        this.aliado=aliado;
+        this.enemigo=enemigo;
+        this.experiencia=experiencia;
+        this.nivel=nivel;
+    }
+
+    Escupir(){
+        console.log("¡Para que que duches!");
+        return "¡Para que que duches!";
+    }
+    Salta(){
+        console.log("¡No me has dado!")
+    } 
+    morir(){
+        console.log("¡NONONONONOONONO!")
+    } 
+} 
+
+class topo extends Personaje{
+    constructor(nombre, fuerza, vida, fortaleza, debilidad, poderEspecial, aliado, enemigo, experiencia, nivel) {
+        super (nombre, fuerza, vida, fortaleza, debilidad);
+        this.poderEspecial=poderEspecial;
+        this.aliado=aliado;
+        this.enemigo=enemigo;
+        this.experiencia=experiencia;
+        this.nivel=nivel;
+    }
+
+    Tierrazo(){
+        console.log("¡Ríndete!")
+    }
+    Terremoto(){
+        console.log("¡Te pasa por no huir!");
+        return "¡Te pasa por no huir!";
+    } 
+    morir(){
+        console.log("¡Véngame mago!")
+    } 
+} 
+
+//Creación de 4 personajes
+var Mago2 = new PersonajeMagico("Mago2", 180, 60, "volar", "electricidad", "kamekameha", "los_topos", "Troll", 10000, 5);   
+var topo1 = new topo("Troll", 100, 50, "fuerza_bruta", "agua", "garrotazo", "duendes", "Mago2", 1000, 5);
+var duende1 = new duende("Troll", 100, 50, "fuerza_bruta", "agua", "garrotazo", "duendes", "Mago2", 1000, 5); 
+var Troll1 = new Trolls("Troll", 100, 50, "fuerza_bruta", "agua", "garrotazo", "duendes", "Mago2", 1000, 5);
+    
+
+var btnMago = document.querySelector("#mago");
+btnMago.onclick = function() {
+
+    var msg = Mago2.lanzarHechizo(Troll1);
+    var divMsg = document.querySelector("#msg");
+    divMsg.innerHTML = msg;
+}
+
+var btnTrol = document.querySelector("#trol");
+btnTrol.onclick = function() {
+
+    var msg2 = Troll1.morir(Mago2);
+    var divMsg2 = document.querySelector("#msg2");
+    divMsg2.innerHTML = msg2;
+}
+var btnDuende = document.querySelector("#duende");
+btnDuende.onclick = function() {
+
+    var msg3 = duende1.Escupir(Mago2);
+    var divMsg3 = document.querySelector("#msg3");
+    divMsg3.innerHTML = msg3;
+}
+var btnTopo = document.querySelector("#topo");
+btnTopo.onclick = function() {
+
+    var msg4 = topo1.Terremoto(duende1);
+    var divMsg4 = document.querySelector("#msg4");
+    divMsg4.innerHTML = msg4;
+}
+
+
+</script>
+</body>
+</html>
